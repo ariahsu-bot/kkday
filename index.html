@@ -342,7 +342,7 @@ footer{color:var(--muted);font-size:12px;padding-block:32px;text-align:center}
       <div class="card"><h3>相機規定</h3><div class="muted" style="color:var(--ink)">全程使用 Insta360 X6，<b>請勿使用他牌運動相機或雲台相機</b>。建議自備多張 SD 卡。</div></div>
       <div class="card"><h3>時差與天氣</h3><div class="muted" style="color:var(--ink)">與台灣、香港同為 UTC+8。11 月進入乾季，浮潛、帆船視海況調整，留意當天通知。</div></div>
       <div class="card"><h3>餐食</h3><div class="muted" style="color:var(--ink)">全程含三餐，午晚餐每人含一杯飲料（贊助餐除外），每日另有零食預算。</div></div>
-      <div class="card"><h3>交通</h3><div class="muted" style="color:var(--ink)">市區叫車可用 Grab。11/18 東協旅遊論壇期間 PICC／CCP 周邊可能封路。</div></div>
+      <div class="card"><h3>交通</h3><div class="muted" style="color:var(--ink)">市區叫車可用 Grab。11/18 適逢東協峰會，馬尼拉行程集中在市區，減少長途移動與塞車風險。</div></div>
     </div>
   </section>
 
@@ -389,8 +389,9 @@ const HOTELS = [
 
 // who: "tw" | "hk" | undefined (both). fl: flight row.
 const DAYS = [
-  { n: 1, date: "11/13", wd: "五", c: "teal", city: "宿霧", img: "img/cebu.jpg", title: "抵達宿霧｜歡迎晚餐", bubble: "免簽即飛，落地就是度假模式", meal: "晚餐（度假村贊助）", stay: "Cebu Plantation Bay Resort & Spa", rows: [
+  { n: 1, date: "11/13", wd: "五", c: "teal", city: "宿霧", img: "img/cebu.jpg", title: "抵達宿霧｜歡迎晚餐", bubble: "免簽即飛，落地就是度假模式", meal: "午餐（1、2 號車）、晚餐（度假村贊助）", stay: "Cebu Plantation Bay Resort & Spa", rows: [
     { tm: "08:20–11:15", what: "台灣組抵達：BR 281 TPE → CEB", who: "tw", fl: 1, note: "長榮航空，非 Cebu Pacific 贊助航段，請勿拍攝／曝光" },
+    { tm: "中午", what: "午餐－市區在地烤乳豬（Lechon）餐廳", note: "1、2 號車" },
     { tm: "11:45–14:35", what: "香港組抵達：5J 241 HKG → CEB", who: "hk", fl: 1, tags: CP, story: "至少 4 則 IG Story" },
     { tm: "抵達後", what: "接機，專車前往度假村，入住休息", note: "依各組抵達時間分別接機", link: [["Plantation Bay", H(750376)]], tags: ["@plantationbay_resort"] },
     { tm: "晚上", what: "歡迎晚餐－Plantation Bay", note: "依度假村餐廳時間安排" }] },
@@ -401,14 +402,14 @@ const DAYS = [
     { tm: "07:00–08:30", what: "沙丁魚風暴＆海龜浮潛", note: "視海況而定" },
     { tm: "08:30–10:15", what: "梳洗，前往巴迪安卡瓦山瀑布" },
     { tm: "10:15–14:15", what: "卡瓦山瀑布溪降", note: "視天氣、溪況及業者核准而定" },
+    { tm: "當天", what: "領取歡迎禮：宿霧在地特產（含卡爾卡爾炸豬皮 Carcar chicharon）", note: "宿霧當地旅行社準備" },
     { tm: "14:45–15:45", what: "午餐－卡瓦山附近在地餐廳" },
     { tm: "15:45 起", what: "返回 Plantation Bay；晚餐－Plantation Bay" }] },
   { n: 3, date: "11/15", wd: "日", c: "green", city: "宿霧", img: "img/resort.jpg", title: "度假村全日｜在地小吃｜COCO Cebu", bubble: "慢下來，好好放空", meal: "早餐、午餐（贊助）、晚餐", stay: "Cebu Plantation Bay Resort & Spa", reel: "Reel 3 拍攝日", rows: [
     { tm: "06:00", what: "早餐－Plantation Bay", link: [["Plantation Bay", H(750376)]], tags: ["@plantationbay_resort"] },
     { tm: "07:00–12:00", what: "度假村休閒與內容拍攝", note: "體驗安排時段待確認" },
     { tm: "12:00–13:00", what: "午餐－Plantation Bay" },
-    { tm: "13:00–16:00", what: "度假村自由時間", note: "體驗安排時段待確認" },
-    { tm: "16:00–17:30", what: "在地小吃：烤乳豬、卡爾卡爾炸豬皮、烤芭蕉" },
+    { tm: "13:00–17:30", what: "度假村自由時間", note: "體驗安排時段待確認" },
     { tm: "18:30 起", what: "晚餐－COCO Cebu（Mactan Seaport Village）", note: "米其林指南餐廳；17:30 出發" }] },
   { n: 4, date: "11/16", wd: "一", c: "blue", city: "長灘島", img: "img/paraw.jpg", title: "宿霧 → 長灘島｜Paraw 帆船", bubble: "早起換島，帆船追日落", meal: "外帶早餐、午餐、晚餐", stay: "Four Points by Sheraton Boracay", rows: [
     { tm: "03:00–04:20", what: "Morning call，退房前往麥克坦宿霧機場", note: "03:20 出發、04:20 抵達機場（外帶早餐）" },
@@ -425,14 +426,14 @@ const DAYS = [
     { tm: "12:00–13:00", what: "午餐－La Fiesta All Day Dine（Mandarin Bay）；13:00 返回休息" },
     { tm: "下午", what: "Mandala 招牌按摩（90 分鐘）", link: [["Mandala Spa", K(11722)]] },
     { tm: "晚上", what: "晚餐－Eight by The Beach" }] },
-  { n: 6, date: "11/18", wd: "三", c: "teal", city: "馬尼拉", img: "img/intramuros.jpg", title: "長灘島 → 馬尼拉｜Likha、王城區、MOA 夕陽", bubble: "從海島切到城市", meal: "外帶早餐、午餐、晚餐", stay: "SAVÈA Bay City Manila", rows: [
+  { n: 6, date: "11/18", wd: "三", c: "teal", city: "馬尼拉", img: "img/intramuros.jpg", title: "長灘島 → 馬尼拉｜王城區、MOA Kultura 與夕陽", bubble: "從海島切到城市", meal: "外帶早餐、午餐、晚餐", stay: "SAVÈA Bay City Manila", rows: [
     { tm: "04:00–05:35", what: "Morning call，退房前往卡提克蘭機場", note: "04:30 出發、05:35 抵達機場（外帶早餐）" },
     { tm: "07:35–08:50", what: "全員：5J 920 MPH → MNL", fl: 1, tags: CP, story: "至少 4 則 IG Story" },
-    { tm: "10:30–11:30", what: "Likha 體驗－ITC Complex（Roxas Blvd）", note: "抵達後直接前往；東協旅遊論壇期間可能封路，需確認能否進入" },
-    { tm: "12:00–13:00", what: "午餐－Barbara's Heritage Restaurant（王城區）" },
-    { tm: "13:15–15:45", what: "王城區歷史導覽" },
-    { tm: "16:15–17:45", what: "MOA 海濱，夕陽與內容拍攝", note: "視天氣與道路狀況而定" },
-    { tm: "18:30 起", what: "晚餐－China Blue by Jereme Leung（Conrad Manila）", note: "米其林指南餐廳" },
+    { tm: "08:50 起", what: "抵達 NAIA 第三航廈，直接前往王城區導覽（Intramuros）" },
+    { tm: "中午", what: "午餐－Barbara's Heritage Restaurant（王城區），含文化表演" },
+    { tm: "下午", what: "SM Mall of Asia：逛 Kultura 菲律賓文創選物" },
+    { tm: "傍晚", what: "MOA 海濱夕陽，拍攝現代馬尼拉", note: "視天氣而定" },
+    { tm: "晚上", what: "晚餐－China Blue by Jereme Leung（Conrad Manila）", note: "米其林指南餐廳" },
     { tm: "晚餐後", what: "入住 SAVÈA Bay City Manila", link: [["SAVÈA Bay City", H(748865)]] }] },
   { n: 7, date: "11/19", wd: "四", c: "yellow", city: "馬尼拉", img: "img/moa.jpg", title: "分組返程｜大帆船博物館｜Cabel 午餐", bubble: "帶著回憶回家", meal: "台灣組：外帶早餐｜香港組：早餐、午餐", stay: "返程日", rows: [
     { tm: "02:30–03:35", what: "專車前往 NAIA 第三航廈（外帶早餐）", who: "tw", note: "03:05 出發、03:35 抵達 T3", link: [["馬尼拉機場接送", AIRPORT]] },
