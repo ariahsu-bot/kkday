@@ -280,10 +280,6 @@ footer{color:var(--muted);font-size:12px;padding-block:32px;text-align:center}
     <div class="card" style="margin-top:14px"><h3>Hashtag</h3><div class="tagrow" id="hashTags"></div>
       <div class="acts"><button class="btn solid" type="button" data-copyset="hashTags">複製全部 Hashtag</button></div>
       <div class="muted" style="margin-top:8px">Cebu Pacific 相關內容必帶 #FlyToMyHappyPhilippines，並標記 @cebupacificair。</div></div>
-    <div class="card" style="margin-top:14px"><h3>上網 eSIM／SIM 卡推薦 <span class="badge cp">IG Story ×1</span></h3>
-      <div class="muted" style="margin-top:2px">發一則 Story 分享在菲律賓怎麼上網，附上推薦連結。填好 CID 後按「複製」就是你的專屬連結。</div>
-      <div class="acts" id="simLinks"></div></div>
-
     <details class="more" open>
       <summary>Reels ×3 ＋ 貼文 ×1 <span class="badge" style="margin-left:auto">行程後 2–3 週內交稿・需審核</span></summary>
       <div class="tablewrap"><table>
@@ -295,7 +291,7 @@ footer{color:var(--muted);font-size:12px;padding-block:32px;text-align:center}
           <tr><td><b>貼文 ×1</b><div class="muted">靜態／輪播</div></td><td>宿霧／長灘島旅程，突顯怎麼搭 Cebu Pacific 前往，露出 Insta360 X6。<div class="muted">避免景點清單型、腳本化廣告、過度電影感、「宿務航空帶你…」促銷口吻。</div></td><td><span class="chip">@cebupacificair</span></td><td><span class="chip">#FlyToMyHappyPhilippines</span><span class="chip">#Insta360</span><span class="chip">#Insta360X6</span><span class="chip">#Diveintothismoment</span><span class="chip">#LovethePhilippines</span></td></tr>
         </tbody></table></div>
     </details>
-    <details class="more">
+    <details class="more" open>
       <summary>IG Story 數量 <span class="badge" style="margin-left:auto">Story 無需審核</span></summary>
       <div class="tablewrap"><table>
         <thead><tr><th>合作方</th><th style="width:140px">數量</th><th>內容</th><th>標記／連結</th><th style="width:110px">發佈時間</th></tr></thead>
@@ -526,15 +522,14 @@ function renderGroup() {
     <div class="d">${f.d}</div><div class="no">${f.no}${f.sp === false ? '<span class="badge">非贊助</span>' : ""}</div>
     <div class="rt">${f.from}<i></i>${f.to}</div><div class="t">${f.t}</div>${f.call ? `<div class="call">${f.call}</div>` : ""}</div>`).join("");
   $("tw-warn").hidden = group !== "tw";
-  $("mustTags").innerHTML = g.tags.map(chip).join("");
-  $("simLinks").innerHTML = g.sim.map(([t, u]) => plink(t, u, "teal")).join("");
-  $("hashTags").innerHTML = ["#FlyToMyHappyPhilippines", "#Insta360", "#Insta360X6", "#Diveintothismoment", "#LovethePhilippines"].map(chip).join("");
+  $("mustTags").innerHTML = g.tags.map(chip).join("");  $("hashTags").innerHTML = ["#FlyToMyHappyPhilippines", "#Insta360", "#Insta360X6", "#Diveintothismoment", "#LovethePhilippines"].map(chip).join("");
   const ins = group === "tw" ? "@insta360tw" : "@insta360hk", kk = group === "tw" ? "@kkdaytw" : "@kkdayhk";
   const S = [
     ["Cebu Pacific × Insta360（旅程）", g.storyCP, "把搭 Cebu Pacific 的旅程融入菲律賓體驗，用 X6 記錄", ["@cebupacificair", ins], "行程期間即時"],
-    ["Insta360", "至少 14 則<br>每日 2 則", "X6 外觀 2、戶外實拍（偽空拍、子彈時間）4、水下實拍 3、相機＋自拍杆側寫 4", [ins], "當日", "附 Insta360 專屬連結"],
-    ["KKday", "4 則", "導流至 KKday × Insta360 菲律賓活動，說出想去就能出發的輕鬆感，露出 X6", [kk, ins], "當日", "附 KKday 專屬連結"],
-    ["KKday 上網（eSIM／SIM 卡）", "1 則", "分享在菲律賓怎麼上網", [kk], "行程期間", "附 eSIM／SIM 卡推薦連結"],
+    ["KKday × Insta360", "至少 14 則<br>每日 2 則", "X6 相機外觀 2、X6 戶外實拍效果（偽空拍、子彈時間）4、X6 水下實拍效果 3、X6 相機＋自拍杆使用側寫 4<br>導流至 KKday × Insta360 菲律賓活動，說出想去就能出發的輕鬆感", [kk, ins], "當日體驗曝光",
+      `必附 KKday × Insta360 活動連結<div class="acts">${plink("活動頁", g.promo, "teal")}</div>`],
+    ["KKday 上網（eSIM／SIM 卡）", "1 則", "分享在菲律賓怎麼上網" + (g.sim.length > 1 ? "<br>兩個連結都附上，讓用 eSIM 和用實體 SIM 卡的粉絲各自選" : ""), [kk], "行程期間",
+      `必附商品連結<div class="acts">${g.sim.map(([t, u]) => plink(t, u, "teal")).join("")}</div>`],
     ["Cebu Plantation Bay", "1 則", "度假村體驗，用 X6 記錄", ["@plantationbay_resort"], "當日～12 月初"],
     ["Four Points Boracay", "1 則", "長灘島住宿體驗，用 X6 記錄", ["@fourpointsboracay_ph"], "當日～12 月初"],
     ["Cebu Pacific（機票優惠）", "1 則", "分享 12 月機票優惠（資訊由 Cebu Pacific 提供）", ["@cebupacificair"], "12 月初"]];
