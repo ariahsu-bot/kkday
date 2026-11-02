@@ -156,6 +156,8 @@ td .chip{display:inline-block;font-size:12px;padding:0 8px;border-radius:999px;m
 .flt .t{font-variant-numeric:tabular-nums;font-weight:500;font-size:14px}
 .flt .call{font-size:12px;color:var(--muted);margin-top:6px;border-top:1px solid var(--line);padding-top:6px}
 .flt.nosp{border-style:dashed}
+.simnote{margin-top:10px;background:var(--warn-bg);color:var(--warn-ink);border-left:4px solid var(--pink);border-radius:10px;padding:8px 12px;font-size:13px;line-height:1.5}
+.simnote b{display:block;color:var(--pink-ink);font-size:14px}
 .warn{background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;padding:8px 14px;font-size:13px;margin-top:10px}
 
 /* hotels */
@@ -305,7 +307,7 @@ footer{color:var(--muted);font-size:12px;padding-block:32px;text-align:center}
   <section id="travel">
     <div class="sec-h"><h2>航班・集合・行李</h2><span class="en">Flights · Meeting · Baggage</span></div>
     <div class="grid3">
-      <div class="card qcard"><h3>11/13 集合</h3><div class="big" id="meet-time"></div><div class="muted" id="meet-place"></div></div>
+      <div class="card qcard"><h3>11/13 集合</h3><div class="big" id="meet-time"></div><div class="muted" id="meet-place"></div><div class="simnote" id="meet-note" hidden></div></div>
       <div class="card qcard"><h3>回程抵達</h3><div class="big" id="home-time"></div><div class="muted" id="home-place"></div></div>
       <div class="card qcard"><h3>行李限制（每人）</h3>
         <div class="bag"><div><b>10kg</b>手提 1 件</div><div><b>20kg</b>託運 1 件</div></div>
@@ -369,7 +371,8 @@ const GROUP = {
     sim: [["eSIM 推薦", "https://www.kkday.com/zh-tw/product/151322"]]
   },
   hk: {
-    locale: "zh-hk", meet: ["09:30", "香港國際機場 第二航廈"], home: ["20:20", "11/19 抵達香港"],
+    locale: "zh-hk", meet: ["09:30", "香港國際機場 第二航廈"],
+    meetNote: "<b>集合前請先領取實體 SIM 卡</b>香港國際機場 T1 5 樓入境大堂 A 區 A16 櫃檯", home: ["20:20", "11/19 抵達香港"],
     tags: ["@kkdayhk", "@insta360hk", "@philippinetourism_hk_"],
     code: ["26PHKOL80", "菲律賓全商品滿 HK$400 折 HK$80"], promo: "https://www.kkday.com/zh-hk/promo/lovethephilippines",
     flights: [
@@ -393,7 +396,7 @@ const DAYS = [
   { n: 1, date: "11/13", wd: "五", c: "teal", city: "宿霧", img: "img/cebu.jpg", title: "抵達宿霧｜歡迎晚餐", bubble: "免簽即飛，落地就是度假模式", meal: "午餐（1、2 號車）、晚餐（度假村贊助）", stay: "Cebu Plantation Bay Resort & Spa", rows: [
     { tm: "08:20–11:15", what: "台灣組抵達：BR 281 TPE → CEB", who: "tw", fl: 1, note: "長榮航空，非 Cebu Pacific 贊助航段，請勿拍攝／曝光" },
     { tm: "中午", what: "午餐－市區在地烤乳豬（Lechon）餐廳", note: "1、2 號車" },
-    { tm: "11:45–14:35", what: "香港組抵達：5J 241 HKG → CEB", who: "hk", fl: 1, tags: CP, story: "至少 4 則 IG Story" },
+    { tm: "11:45–14:35", what: "香港組抵達：5J 241 HKG → CEB", who: "hk", fl: 1, tags: CP, note: "出發前先到香港國際機場 T1 5 樓入境大堂 A 區 A16 櫃檯領取實體 SIM 卡", story: "至少 4 則 IG Story" },
     { tm: "抵達後", what: "接機，專車前往度假村，入住休息", note: "依各組抵達時間分別接機", link: [["Plantation Bay", H(750376)]], tags: ["@plantationbay_resort"] },
     { tm: "晚上", what: "歡迎晚餐－Plantation Bay", note: "依度假村餐廳時間安排" }] },
   { n: 2, date: "11/14", wd: "六", c: "yellow", city: "莫阿爾博阿", img: "img/sardine.jpg", title: "沙丁魚風暴＆海龜｜卡瓦山瀑布溪降", bubble: "早起的人有魚看", meal: "外帶早餐、午餐、晚餐", stay: "Cebu Plantation Bay Resort & Spa", rows: [
@@ -517,6 +520,7 @@ function renderGroup() {
   const g = GROUP[group];
   document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.g === group));
   $("meet-time").innerHTML = `${g.meet[0]}<small>11/13</small>`; $("meet-place").textContent = g.meet[1];
+  $("meet-note").innerHTML = g.meetNote || ""; $("meet-note").hidden = !g.meetNote;
   $("home-time").innerHTML = `${g.home[0]}<small>11/19</small>`; $("home-place").textContent = g.home[1];
   $("flights").innerHTML = g.flights.map(f => `<div class="flt${f.sp === false ? " nosp" : ""}" style="--fc:${f.sp === false ? "var(--muted)" : "var(--blue-ink)"}">
     <div class="d">${f.d}</div><div class="no">${f.no}${f.sp === false ? '<span class="badge">非贊助</span>' : ""}</div>
