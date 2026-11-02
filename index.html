@@ -280,6 +280,9 @@ footer{color:var(--muted);font-size:12px;padding-block:32px;text-align:center}
     <div class="card" style="margin-top:14px"><h3>Hashtag</h3><div class="tagrow" id="hashTags"></div>
       <div class="acts"><button class="btn solid" type="button" data-copyset="hashTags">複製全部 Hashtag</button></div>
       <div class="muted" style="margin-top:8px">Cebu Pacific 相關內容必帶 #FlyToMyHappyPhilippines，並標記 @cebupacificair。</div></div>
+    <div class="card" style="margin-top:14px"><h3>上網 eSIM／SIM 卡推薦 <span class="badge cp">IG Story ×1</span></h3>
+      <div class="muted" style="margin-top:2px">發一則 Story 分享在菲律賓怎麼上網，附上推薦連結。填好 CID 後按「複製」就是你的專屬連結。</div>
+      <div class="acts" id="simLinks"></div></div>
 
     <details class="more" open>
       <summary>Reels ×3 ＋ 貼文 ×1 <span class="badge" style="margin-left:auto">行程後 2–3 週內交稿・需審核</span></summary>
@@ -366,7 +369,8 @@ const GROUP = {
       { d: "11/16（一）", no: "5J 132", from: "CEB", to: "MPH", t: "06:20 – 07:25", call: "03:00 Morning call · 03:20 出發" },
       { d: "11/18（三）", no: "5J 920", from: "MPH", to: "MNL", t: "07:35 – 08:50", call: "04:00 Morning call · 04:30 出發" },
       { d: "11/19（四）", no: "5J 312", from: "MNL", to: "TPE", t: "06:35 – 09:35", call: "02:30 集合 · 03:05 出發往 T3" }],
-    storyCP: "共 12 則<br>11/16、11/18、11/19 各 4"
+    storyCP: "共 12 則<br>11/16、11/18、11/19 各 4",
+    sim: [["eSIM 推薦", "https://www.kkday.com/zh-tw/product/151322"]]
   },
   hk: {
     locale: "zh-hk", meet: ["09:30", "香港國際機場 第二航廈"], home: ["20:20", "11/19 抵達香港"],
@@ -377,7 +381,8 @@ const GROUP = {
       { d: "11/16（一）", no: "5J 132", from: "CEB", to: "MPH", t: "06:20 – 07:25", call: "03:00 Morning call · 03:20 出發" },
       { d: "11/18（三）", no: "5J 920", from: "MPH", to: "MNL", t: "07:35 – 08:50", call: "04:00 Morning call · 04:30 出發" },
       { d: "11/19（四）", no: "5J 114", from: "MNL", to: "HKG", t: "17:50 – 20:20", call: "14:50 前抵達 NAIA 第三航廈" }],
-    storyCP: "共 16 則<br>11/13、11/16、11/18、11/19 各 4"
+    storyCP: "共 16 則<br>11/13、11/16、11/18、11/19 各 4",
+    sim: [["使用 eSIM 推薦", "https://www.kkday.com/zh-tw/product/151322"], ["SIM 卡推薦", "https://www.kkday.com/zh-hk/product/271224"]]
   }
 };
 
@@ -522,12 +527,14 @@ function renderGroup() {
     <div class="rt">${f.from}<i></i>${f.to}</div><div class="t">${f.t}</div>${f.call ? `<div class="call">${f.call}</div>` : ""}</div>`).join("");
   $("tw-warn").hidden = group !== "tw";
   $("mustTags").innerHTML = g.tags.map(chip).join("");
+  $("simLinks").innerHTML = g.sim.map(([t, u]) => plink(t, u, "teal")).join("");
   $("hashTags").innerHTML = ["#FlyToMyHappyPhilippines", "#Insta360", "#Insta360X6", "#Diveintothismoment", "#LovethePhilippines"].map(chip).join("");
   const ins = group === "tw" ? "@insta360tw" : "@insta360hk", kk = group === "tw" ? "@kkdaytw" : "@kkdayhk";
   const S = [
     ["Cebu Pacific × Insta360（旅程）", g.storyCP, "把搭 Cebu Pacific 的旅程融入菲律賓體驗，用 X6 記錄", ["@cebupacificair", ins], "行程期間即時"],
     ["Insta360", "至少 14 則<br>每日 2 則", "X6 外觀 2、戶外實拍（偽空拍、子彈時間）4、水下實拍 3、相機＋自拍杆側寫 4", [ins], "當日", "附 Insta360 專屬連結"],
     ["KKday", "4 則", "導流至 KKday × Insta360 菲律賓活動，說出想去就能出發的輕鬆感，露出 X6", [kk, ins], "當日", "附 KKday 專屬連結"],
+    ["KKday 上網（eSIM／SIM 卡）", "1 則", "分享在菲律賓怎麼上網", [kk], "行程期間", "附 eSIM／SIM 卡推薦連結"],
     ["Cebu Plantation Bay", "1 則", "度假村體驗，用 X6 記錄", ["@plantationbay_resort"], "當日～12 月初"],
     ["Four Points Boracay", "1 則", "長灘島住宿體驗，用 X6 記錄", ["@fourpointsboracay_ph"], "當日～12 月初"],
     ["Cebu Pacific（機票優惠）", "1 則", "分享 12 月機票優惠（資訊由 Cebu Pacific 提供）", ["@cebupacificair"], "12 月初"]];
