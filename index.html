@@ -87,6 +87,13 @@ section{scroll-margin-top:64px}
 .sec-h{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .sec-h h2{font-size:clamp(22px,3vw,26px);font-weight:900}
 .sec-h .en{font-family:var(--display);font-weight:600;color:var(--muted);font-size:14px}
+.contacts{margin-top:10px}
+.contacts h2{font-size:15px;font-weight:700;margin-bottom:6px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.ct{background:var(--paper);border-left:4px solid var(--c);border-radius:12px;padding:8px 12px;display:flex;flex-direction:column;font-size:13px;min-width:0}
+.ct span{color:var(--muted);font-size:12px}
+.ct b{font-size:15px}
+.ct a{color:var(--c);font-weight:700;text-decoration:none;font-variant-numeric:tabular-nums}
 .card{background:var(--paper);border-radius:18px;padding:16px 18px;min-width:0}
 .card h3{font-size:15px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -243,6 +250,15 @@ footer{color:var(--muted);font-size:12px;padding-block:32px;text-align:center}
     </div>
     <div class="blob" style="--c:var(--teal)"><img src="img/hero.jpg" alt="菲律賓海灣與石灰岩島嶼"></div>
   </div>
+
+  <section class="contacts" aria-label="聯絡人">
+    <h2>聯絡人</h2>
+    <div class="cgrid">
+      <div class="ct" style="--c:var(--teal-ink)"><span>當地導遊｜Chase Wonder Tour</span><b>Gerard Ryan U. Chan</b><a href="tel:+639253110008">+63 925 311 0008</a></div>
+      <div class="ct" style="--c:var(--pink-ink)"><span>KKday</span><b>Aria</b><a href="tel:+886976336964">+886 976 336 964</a></div>
+      <div class="ct" style="--c:var(--blue-ink)"><span>Insta360</span><b>Zoey</b><a href="tel:+8615018499932">+86 150 1849 9932</a></div>
+    </div>
+  </section>
 
   <!-- CID -->
   <section id="cid" class="cid">
@@ -406,9 +422,9 @@ const DAYS = [
     { tm: "抵達後", what: "接機，專車前往度假村，入住休息", note: "依各組抵達時間分別接機", link: [["Plantation Bay", H(750376)]], tags: ["@plantationbay_resort"] },
     { tm: "晚上", what: "歡迎晚餐－Plantation Bay", note: "依度假村餐廳時間安排" }] },
   { n: 2, date: "11/14", wd: "六", c: "yellow", city: "莫阿爾博阿", img: "img/sardine.jpg", title: "沙丁魚風暴＆海龜｜卡瓦山瀑布溪降", bubble: "早起的人有魚看", meal: "外帶早餐、午餐、晚餐", stay: "Cebu Plantation Bay Resort & Spa", pack: {
-    wear: ["泳衣或泳褲", "防曬衣（水母衣）或舒適的速乾上衣", "速乾短褲或緊身運動褲", "防滑溯溪鞋（或握地力良好的涉水鞋）"],
+    wear: ["泳衣或泳褲", "防曬衣（水母衣）或舒適的速乾上衣", "速乾短褲或緊身運動褲", "防滑溯溪鞋（或握地力良好的涉水鞋）；沒有的話可穿舊跑鞋或越野跑鞋，須能完全泡水、踩泥"],
     bring: ["備用衣物及內衣褲", "毛巾", "防水袋或手機防水套", "防曬乳", "個人盥洗用品", "驅蟲噴霧"],
-    tips: ["凌晨 3:00 出發，請在離開飯店前先將泳衣穿在裡面", "強烈建議穿溯溪鞋，溪降時更安全舒適", "請勿穿牛仔褲、厚重衣物或拖鞋", "僅攜帶必要個人物品，貴重物品請留在飯店", "活動全程請聽從當地嚮導指引"] }, rows: [
+    tips: ["凌晨 3:00 出發，請在離開飯店前先將泳衣穿在裡面", "現場不提供也不能租借溯溪鞋，請自備", "強烈建議穿溯溪鞋，溪降時更安全舒適", "請勿穿牛仔褲、厚重衣物、拖鞋、一般涼鞋或時尚涼鞋：在濕滑岩石上抓地力不足，腳趾也容易受傷", "行程中有短暫整理清潔時間，但只有幾分鐘；設施照片待當地合作方提供", "僅攜帶必要個人物品，貴重物品請留在飯店", "活動全程請聽從當地嚮導指引"] }, rows: [
     { tm: "02:00–03:00", what: "Morning call，領取外帶早餐", note: "泳衣先穿在裡面再出門，著裝與攜帶物品見本日下方清單" },
     { tm: "03:00–06:30", what: "宿霧 → 墨寶 Moalboal", link: [["墨寶浮潛一日遊", K("34000-moalboal-snorkeling-day-tour-from-cebu-philippines")]] },
     { tm: "06:30–07:00", what: "報到與準備" },
